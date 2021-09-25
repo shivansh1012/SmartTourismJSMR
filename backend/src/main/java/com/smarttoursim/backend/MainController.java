@@ -120,18 +120,19 @@ public class MainController {
             }
             User user = optionalUser.get();
             Location location = optionalLocation.get();
-
-            Query sQuery = new Query();
-            Criteria sCriteria = Criteria.where("id").is(user);
-            sQuery.addCriteria(sCriteria);
-
-            Update sUpdate = new Update();
-            sUpdate.set("id", user);
-
-            UpdateResult sUpdateRequest = mongoOps.updateFirst(sQuery, sUpdate, User.class);
-            System.out.println(sUpdateRequest);
-
+            
             //add the same in (location and user) review list
+
+            // Query sQuery = new Query();
+            // Criteria sCriteria = Criteria.where("id").is(user);
+            // sQuery.addCriteria(sCriteria);
+
+            // Update sUpdate = new Update();
+            // sUpdate.set("id", user);
+
+            // UpdateResult sUpdateRequest = mongoOps.updateFirst(sQuery, sUpdate, User.class);
+            // System.out.println(sUpdateRequest);
+
             reviewRepository.save(new Review(user, location, body.get("reviewtext"), body.get("rating")));
             hashMap.put("message", "Review Addition Success");
         } catch (Exception e) {
