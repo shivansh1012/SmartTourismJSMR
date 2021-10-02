@@ -1,33 +1,31 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { apiBaseURL } from "../../../Config.js";
-import "./LocationList.styles.css";
 import { Link } from "react-router-dom";
 
-export default function LocationList() {
+export default function BookmarkList() {
+    const [bookmarkList, setBookmarkList] = useState([]);
 
-    const [locationList, setLocationList] = useState([]);
-
-    const getLocationList = async () => {
-        const response = await axios.get(`${apiBaseURL}/location`);
-        // console.log(response.data);
-        setLocationList(response.data.locationList)
+    const getBookmarkList = async () => {
+        const response = await axios.get(`${apiBaseURL}/user`);
+        setBookmarkList(response.data.bookmarkList)
     }
 
     useEffect(() => {
-        getLocationList();
+        getBookmarkList();
     }, []);
 
     return (
         <>
             {
-                locationList.map((location) => {
+                bookmarkList.length > 0 && bookmarkList.map((location) => {
                     return (
                         <div className="list" key={location.id}>
                             <div className="ui card">
                                 <Link to={`/home/location/${location.id}`}>
                                     <img src={location.imageURL} alt={location.name} />
                                 </Link>
+
                                 <div className="content">
                                     <Link to={`/home/location/${location.id}`}>
                                         {location.name}
@@ -37,6 +35,10 @@ export default function LocationList() {
                         </div>
                     )
                 })
+            }
+
+            {
+                bookmarkList.length === 0 && <p>No Bookmarks</p>
             }
         </>
     )

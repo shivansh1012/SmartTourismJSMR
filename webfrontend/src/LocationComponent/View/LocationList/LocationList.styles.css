@@ -20,6 +20,11 @@ a {
   overflow: hidden;
 }
 
+.card {
+  max-width: 290px;
+  /*height: auto;*/
+}
+
 .card:hover {
   background-color: var(--accent-color);
 }
