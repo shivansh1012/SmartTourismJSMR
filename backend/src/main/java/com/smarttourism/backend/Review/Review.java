@@ -44,7 +44,7 @@ public class Review {
         this.id = id;
     }
 
-    // @JsonManagedReference
+    @JsonBackReference
     public User getUser() {
         return user;
     }
@@ -53,7 +53,7 @@ public class Review {
         this.user = user;
     }
 
-    // @JsonBackReference
+    @JsonBackReference
     public Location getLocation() {
         return location;
     }

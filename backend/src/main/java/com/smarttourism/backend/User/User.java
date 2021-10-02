@@ -81,11 +81,11 @@ public class User {
         this.review = review;
     }
 
+    @JsonBackReference
     public ArrayList<Location> getBookmarkedLocation() {
         return bookmarkedLocation;
     }
 
-    // @JsonBackReference
     public void setBookmarkedLocation(ArrayList<Location> bookmarkedLocation) {
         this.bookmarkedLocation = bookmarkedLocation;
     }
