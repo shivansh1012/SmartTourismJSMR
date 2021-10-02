@@ -1,4 +1,4 @@
-package com.smarttoursim.backend.Location;
+package com.smarttourism.backend.Location;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;

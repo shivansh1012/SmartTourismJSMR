@@ -1,4 +1,4 @@
-package com.smarttoursim.backend;
+package com.smarttourism.backend;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,12 +8,12 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.smarttoursim.backend.Location.Location;
-import com.smarttoursim.backend.Location.LocationRepository;
-import com.smarttoursim.backend.Review.ReviewRepository;
-import com.smarttoursim.backend.User.User;
-import com.smarttoursim.backend.User.UserRepository;
-import com.smarttoursim.backend.Review.Review;
+import com.smarttourism.backend.Location.Location;
+import com.smarttourism.backend.Location.LocationRepository;
+import com.smarttourism.backend.Review.ReviewRepository;
+import com.smarttourism.backend.User.User;
+import com.smarttourism.backend.User.UserRepository;
+import com.smarttourism.backend.Review.Review;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;

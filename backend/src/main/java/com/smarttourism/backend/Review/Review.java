@@ -1,11 +1,11 @@
-package com.smarttoursim.backend.Review;
+package com.smarttourism.backend.Review;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.smarttoursim.backend.Location.Location;
-import com.smarttoursim.backend.User.User;
+import com.smarttourism.backend.Location.Location;
+import com.smarttourism.backend.User.User;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;

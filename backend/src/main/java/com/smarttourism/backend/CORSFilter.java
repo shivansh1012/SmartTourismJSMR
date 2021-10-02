@@ -1,4 +1,4 @@
-package com.smarttoursim.backend;
+package com.smarttourism.backend;
 
 import java.io.IOException;
 import javax.servlet.Filter;

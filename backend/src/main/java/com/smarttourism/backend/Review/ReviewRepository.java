@@ -1,4 +1,4 @@
-package com.smarttoursim.backend.Review;
+package com.smarttourism.backend.Review;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
