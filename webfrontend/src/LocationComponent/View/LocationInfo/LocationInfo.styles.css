@@ -12,14 +12,14 @@ a {
     text-decoration: none;
 }
 
-#back Link {
-    text-decoration: none;
-    color: black;
-}
-
-img {
+.location-content img {
     display: block;
     max-width: 100%;
     height: auto;
     width: 25px;
+    margin: 20px;
+}
+
+.location-content p {
+    margin-top: 10px;
 }

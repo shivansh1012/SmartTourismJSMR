@@ -1,0 +1,36 @@
+.login-form {
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    /*background-color: var(--accent-color);*/
+    margin-top: 150px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 350px;
+    border: 1px solid var(--secondary-color);
+    padding: 30px;
+}
+
+.form-container {
+    margin: 30px 0;
+}
+
+h2 {
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.btn .btn-success {
+    margin-top: 20px;
+    background-color: var(--primary-color);
+}
+
+.btn-success:hover {
+    background-color: var(--secondary-color);
+}

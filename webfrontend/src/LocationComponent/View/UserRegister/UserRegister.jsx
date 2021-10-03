@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import axios from 'axios';
 import { apiBaseURL } from "../../../Config.js";
 import UserAuthContext from "../../UserAuthContext.js";
+
+import "./UserRegister.styles.css";
 
 export default function UserRegister() {
     const [name, setName] = useState("");
@@ -36,30 +38,50 @@ export default function UserRegister() {
     };
 
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md-4 offset-md-4">
-                    <div className="login-form bg-light mt-4 p-4">
-                        <form className="row g-3" onSubmit={handleRegister}>
-                            <div className="col-12">
-                                <label>Name</label>
-                                <input type="text" name="name" className="form-control" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-                            </div>
-                            <div className="col-12">
-                                <label>Email</label>
-                                <input type="text" name="email" className="form-control" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                            </div>
-                            <div className="col-12">
-                                <label>Password</label>
-                                <input type="password" name="password" className="form-control" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                            </div>
-                            <div className="col-12">
-                                <button type="submit" className="btn btn-dark float-end">SignUp</button>
-                            </div>
-                        </form>
+        // <div className="container">
+        //     <div className="row">
+        //         <div className="col-md-4 offset-md-4">
+        //             <div className="login-form bg-light mt-4 p-4">
+        //                 <form className="row g-3" onSubmit={handleRegister}>
+        //                     <div className="col-12">
+        //                         <label>Name</label>
+        //                         <input type="text" name="name" className="form-control" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+        //                     </div>
+        //                     <div className="col-12">
+        //                         <label>Email</label>
+        //                         <input type="text" name="email" className="form-control" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        //                     </div>
+        //                     <div className="col-12">
+        //                         <label>Password</label>
+        //                         <input type="password" name="password" className="form-control" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        //                     </div>
+        //                     <div className="col-12">
+        //                         <button type="submit" className="btn btn-dark float-end">SignUp</button>
+        //                     </div>
+        //                 </form>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
+        <div className="signUp-form">
+            <form onSubmit={handleRegister}>
+                <h2>Sign Up</h2>
+                <div className="form-container">
+                    <label>Name</label>
+                    <input type="text" name="name" className="form-control" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+
+                    <label>Email</label>
+                    <input type="text" name="email" className="form-control" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+
+                    <label>Password</label>
+                    <input type="password" name="password" className="form-control" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+
+                    <div className="text-center">
+                        <button type="submit" className="btn btn-success me-2">Sign Up</button>
                     </div>
                 </div>
-            </div>
+            </form>
+            <p className="signIn-cta"><Link to="/login">Already have an account? Sign In</Link></p>
         </div>
     )
 }
