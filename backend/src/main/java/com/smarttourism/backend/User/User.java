@@ -1,4 +1,4 @@
-package com.smarttoursim.backend.User;
+package com.smarttourism.backend.User;
 
 import java.util.ArrayList;
 
@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.smarttoursim.backend.Location.Location;
-import com.smarttoursim.backend.Review.Review;
+import com.smarttourism.backend.Location.Location;
+import com.smarttourism.backend.Review.Review;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -81,11 +81,11 @@ public class User {
         this.review = review;
     }
 
+    @JsonBackReference
     public ArrayList<Location> getBookmarkedLocation() {
         return bookmarkedLocation;
     }
 
-    // @JsonBackReference
     public void setBookmarkedLocation(ArrayList<Location> bookmarkedLocation) {
         this.bookmarkedLocation = bookmarkedLocation;
     }

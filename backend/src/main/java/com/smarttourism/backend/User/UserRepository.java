@@ -1,4 +1,4 @@
-package com.smarttoursim.backend.User;
+package com.smarttourism.backend.User;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package com.smarttoursim.backend;
+package com.smarttourism.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
