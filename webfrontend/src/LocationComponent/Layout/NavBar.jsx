@@ -31,7 +31,7 @@ export default function NavBar() {
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav ms-auto">
                             {(userLoggedIn === false || userLoggedIn === undefined) && (<Link className="nav-link" to="/login" id="login-button">
-                                <button type="button">Login</button>
+                                <button type="button">Sign In</button>
                             </Link>)}
                             {userLoggedIn === true && (
                                 <>
