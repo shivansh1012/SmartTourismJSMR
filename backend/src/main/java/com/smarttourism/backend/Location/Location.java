@@ -75,10 +75,10 @@ public class Location {
         this.description = description;
     }
 
-//    @JsonBackReference
-//    public ArrayList<Review> getReview() {
-//        return review;
-//    }
+    @JsonBackReference
+    public ArrayList<Review> getReview() {
+        return review;
+    }
 
     public void setReview(ArrayList<Review> review) {
         this.review = review;

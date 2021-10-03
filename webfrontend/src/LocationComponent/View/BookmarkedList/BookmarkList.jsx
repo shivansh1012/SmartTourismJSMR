@@ -7,7 +7,7 @@ export default function BookmarkList() {
     const [bookmarkList, setBookmarkList] = useState([]);
 
     const getBookmarkList = async () => {
-        const response = await axios.get(`${apiBaseURL}/user`);
+        const response = await axios.get(`${apiBaseURL}/user/bookmark`);
         setBookmarkList(response.data.bookmarkList)
     }
 
