@@ -1,4 +1,4 @@
-# SmartToursim
+# SmartTourismJSMR
 
 J - Java/Javascript  
 S - Spring Boot  

@@ -1,4 +1,4 @@
-package com.smarttoursim.backend;
+package com.smarttourism.backend;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,12 +8,12 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.smarttoursim.backend.Location.Location;
-import com.smarttoursim.backend.Location.LocationRepository;
-import com.smarttoursim.backend.Review.ReviewRepository;
-import com.smarttoursim.backend.User.User;
-import com.smarttoursim.backend.User.UserRepository;
-import com.smarttoursim.backend.Review.Review;
+import com.smarttourism.backend.Location.Location;
+import com.smarttourism.backend.Location.LocationRepository;
+import com.smarttourism.backend.Review.ReviewRepository;
+import com.smarttourism.backend.User.User;
+import com.smarttourism.backend.User.UserRepository;
+import com.smarttourism.backend.Review.Review;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -49,9 +49,10 @@ public class MainController {
     // body.forEach((k,v) -> System.out.println("Key = "+ k + ", Value = " + v));
     // ***************Location Requests**********************
 
-    @RequestMapping(method = RequestMethod.GET, path = "/location", produces = { "application/JSON" })
-    public @ResponseBody ResponseEntity<?> getLocation(@RequestParam(defaultValue = "all") String id,
-            @CookieValue(value = "userId", defaultValue = "null") String userId) {
+    @RequestMapping(method = RequestMethod.GET, path = "/location", produces = {"application/JSON"})
+    public @ResponseBody
+    ResponseEntity<?> getLocation(@RequestParam(defaultValue = "all") String id,
+                                  @CookieValue(value = "userId", defaultValue = "null") String userId) {
         HashMap<String, Object> hashMap = new HashMap<>();
 
         if (id.equals("all"))
@@ -61,14 +62,13 @@ public class MainController {
                 hashMap.put("isBookmarked", false);
             } else {
                 ArrayList<Location> bookmarkList = userRepository.findById(userId).get().getBookmarkedLocation();
-                for (int i = 0; i < bookmarkList.size(); i++) {
-                    if (bookmarkList.get(i).getId().equals(id)) {
+                for (Location location : bookmarkList) {
+                    if (location.getId().equals(id)) {
                         hashMap.put("isBookmarked", true);
                         break;
                     }
                 }
-                if (hashMap.get("isBookmarked") == null)
-                    hashMap.put("isBookmarked", false);
+                hashMap.putIfAbsent("isBookmarked", false);
             }
             hashMap.put("locationList", locationRepository.findById(id));
         }
@@ -76,7 +76,8 @@ public class MainController {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/location")
-    public @ResponseBody ResponseEntity<?> newLocation(@RequestBody HashMap<String, String> body) {
+    public @ResponseBody
+    ResponseEntity<?> newLocation(@RequestBody HashMap<String, String> body) {
         HashMap<String, Object> hashMap = new HashMap<>();
         try {
             locationRepository.save(new Location(body.get("name"), body.get("imageURL"), body.get("description"),
@@ -92,8 +93,9 @@ public class MainController {
     // ***************User Login**********************
 
     @RequestMapping(method = RequestMethod.POST, path = "/user")
-    public @ResponseBody ResponseEntity<?> userLogin(@RequestBody HashMap<String, String> body,
-            HttpServletResponse response) {
+    public @ResponseBody
+    ResponseEntity<?> userLogin(@RequestBody HashMap<String, String> body,
+                                HttpServletResponse response) {
         HashMap<String, Object> hashMap = new HashMap<>();
         try {
             User existingUser = userRepository.findByemail(body.get("email"));
@@ -118,7 +120,8 @@ public class MainController {
     // ***************User Register**********************
 
     @RequestMapping(method = RequestMethod.POST, path = "/user/register")
-    public @ResponseBody ResponseEntity<?> userRegister(@RequestBody HashMap<String, String> body) {
+    public @ResponseBody
+    ResponseEntity<?> userRegister(@RequestBody HashMap<String, String> body) {
         HashMap<String, Object> hashMap = new HashMap<>();
         try {
             userRepository.save(new User(body.get("name"), body.get("email"), body.get("password")));
@@ -133,8 +136,9 @@ public class MainController {
     // ***************User Auth**********************
 
     @RequestMapping(method = RequestMethod.GET, path = "/user/getloggedin")
-    public @ResponseBody ResponseEntity<?> getLoggedIn(HttpServletRequest request,
-            @CookieValue(value = "userId", defaultValue = "null") String userId) {
+    public @ResponseBody
+    ResponseEntity<?> getLoggedIn(HttpServletRequest request,
+                                  @CookieValue(value = "userId", defaultValue = "null") String userId) {
         HashMap<String, Object> hashMap = new HashMap<>();
         try {
             if (userId.equals("null")) {
@@ -155,7 +159,8 @@ public class MainController {
     // ***************User Logout**********************
 
     @RequestMapping(method = RequestMethod.GET, path = "/user/logout")
-    public @ResponseBody ResponseEntity<?> userLogout(HttpServletResponse response) {
+    public @ResponseBody
+    ResponseEntity<?> userLogout(HttpServletResponse response) {
         HashMap<String, Object> hashMap = new HashMap<>();
         try {
             Cookie cookie = new Cookie("userId", null);
@@ -171,10 +176,11 @@ public class MainController {
         }
     }
 
-    // ***************User Bookmarks**********************
+    // ***************All User Bookmarks**********************
 
     @RequestMapping(method = RequestMethod.GET, path = "/user")
-    public @ResponseBody ResponseEntity<?> getUserBookmarkList(
+    public @ResponseBody
+    ResponseEntity<?> getUserBookmarkList(
             @CookieValue(value = "userId", defaultValue = "null") String userId) {
         HashMap<String, Object> hashMap = new HashMap<>();
         try {
@@ -191,8 +197,9 @@ public class MainController {
     // ***************Add User Bookmark**********************
 
     @RequestMapping(method = RequestMethod.POST, path = "/user/bookmark")
-    public @ResponseBody ResponseEntity<?> addBookmarkLocation(@RequestBody HashMap<String, String> body,
-            @CookieValue(value = "userId", defaultValue = "null") String userId) {
+    public @ResponseBody
+    ResponseEntity<?> addBookmarkLocation(@RequestBody HashMap<String, String> body,
+                                          @CookieValue(value = "userId", defaultValue = "null") String userId) {
         HashMap<String, Object> hashMap = new HashMap<>();
         try {
             if (userId.equals("null")) {
@@ -221,8 +228,9 @@ public class MainController {
     // ***************Remove User Bookmark**********************
 
     @RequestMapping(method = RequestMethod.POST, path = "/user/bookmark/remove")
-    public @ResponseBody ResponseEntity<?> removeBookmarkLocation(@RequestBody HashMap<String, String> body,
-            @CookieValue(value = "userId", defaultValue = "null") String userId) {
+    public @ResponseBody
+    ResponseEntity<?> removeBookmarkLocation(@RequestBody HashMap<String, String> body,
+                                             @CookieValue(value = "userId", defaultValue = "null") String userId) {
         HashMap<String, Object> hashMap = new HashMap<>();
         try {
             if (userId.equals("null")) {
@@ -230,21 +238,19 @@ public class MainController {
                 return new ResponseEntity<>(hashMap, HttpStatus.UNAUTHORIZED);
             }
 
-            // User existingUser = userRepository.findById(userId).get();
-            // Location existingLocation =
-            // locationRepository.findById(body.get("locationId")).get();
-            // Query userQuery = new Query();
-            // Criteria userCriteria = Criteria.where("id").is(existingUser.getId());
-            // userQuery.addCriteria(userCriteria);
-            // Update userUpdate = new Update();
-            // userUpdate.push("bookmarkedLocation", existingLocation);
+            Query userQuery = new Query();
+            Criteria userCriteria = Criteria.where("id").is(userId);
+            userQuery.addCriteria(userCriteria);
+            Update userUpdate = new Update();
+            userUpdate.pull("bookmarkedLocation", body.get(("locationId")));
 
-            // User userCounter = mongoOps.findAndModify(userQuery, userUpdate, User.class);
-            // System.out.println(!Objects.isNull(userCounter) ? userCounter.getId() : 1);
+            User userCounter = mongoOps.findAndModify(userQuery, userUpdate, User.class);
+//            System.out.println(!Objects.isNull(userCounter) ? userCounter.getId() : 1);
 
             hashMap.put("message", "Bookmark Removed");
             return new ResponseEntity<>(hashMap, HttpStatus.ACCEPTED);
         } catch (Exception e) {
+            System.out.println(e);
             hashMap.put("message", "Internal Server Error");
             return new ResponseEntity<>(hashMap, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -253,7 +259,8 @@ public class MainController {
     // ***************Review Requests**********************
 
     @RequestMapping(method = RequestMethod.GET, path = "/review")
-    public @ResponseBody ResponseEntity<?> getReview(@RequestParam String id) {
+    public @ResponseBody
+    ResponseEntity<?> getReview(@RequestParam String id) {
         HashMap<String, Object> hashMap = new HashMap<>();
         try {
             hashMap.put("reviewDetail", reviewRepository.findById(id));
@@ -265,8 +272,9 @@ public class MainController {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/review")
-    public @ResponseBody ResponseEntity<?> newReview(@RequestBody HashMap<String, String> body,
-            @CookieValue(value = "userId", defaultValue = "null") String userId) {
+    public @ResponseBody
+    ResponseEntity<?> newReview(@RequestBody HashMap<String, String> body,
+                                @CookieValue(value = "userId", defaultValue = "null") String userId) {
         HashMap<String, Object> hashMap = new HashMap<>();
         try {
             if (userId.equals("null")) {
@@ -277,11 +285,11 @@ public class MainController {
             Optional<User> optionalUser = userRepository.findById(userId);
             Optional<Location> optionalLocation = locationRepository.findById(body.get("locationid"));
 
-            if (!optionalUser.isPresent()) {
+            if (optionalUser.isEmpty()) {
                 hashMap.put("message", "Invalid User");
                 return new ResponseEntity<>(hashMap, HttpStatus.CONFLICT);
             }
-            if (!optionalLocation.isPresent()) {
+            if (optionalLocation.isEmpty()) {
                 hashMap.put("message", "Invalid Location");
                 return new ResponseEntity<>(hashMap, HttpStatus.CONFLICT);
             }
@@ -308,8 +316,7 @@ public class MainController {
             Location locationCounter = mongoOps.findAndModify(locationQuery, locationUpdate, Location.class);
 
             // System.out.println(!Objects.isNull(userCounter) ? userCounter.getId() : 1);
-            // System.out.println(!Objects.isNull(locationCounter) ? locationCounter.getId()
-            // : 1);
+            // System.out.println(!Objects.isNull(locationCounter) ? locationCounter.getId(): 1);
 
             hashMap.put("message", "Review Addition Success");
             return new ResponseEntity<>(hashMap, HttpStatus.CREATED);
