@@ -75,23 +75,25 @@ export default function LocationInfo(props) {
             <div className="row">
                 <div className="d-flex justify-content-between mb-3">
                     <div id="back">
-                        <Link to="/home" style={{}}>{'<'}Back</Link>
+                        <Link to="/home" style={{textDecoration: "none", color: "black"}}>{'<'} Back</Link>
                     </div>
-                    {bookmark === false &&
-                        <button type="button" className="btn btn-primary" style={{ "width": "200px" }} onClick={addToBookmark}>Add to Bookmark</button>}
-                    {bookmark === true &&
-                        <button type="button" className="btn btn-primary" style={{ "width": "240px" }} onClick={removeFromBookmark}>Remove From Bookmark</button>}
+                    <div className="bookmark-cta">
+                        {bookmark === false &&
+                        <button type="button" className="bookmark-button" onClick={addToBookmark} style={{width: "160px"}}>
+                            Add Bookmark
+                        </button>}
+                        {bookmark === true &&
+                        <button type="button" className="bookmark-button" onClick={removeFromBookmark} style={{width: "160px"}}>
+                            Remove Bookmark
+                        </button>}
+                    </div>
                 </div>
-                {/*<div className="d-flex justify-content-around mb-3">*/}
-                {/*    <h3 className="d-flex flex-wrap align-items-center" style={{ textAlign: "center" }}>{locationInfo.name}</h3>*/}
-                {/*    <img src={locationInfo.imageURL} style={{ width: "15rem" }} alt={locationInfo.name}></img>*/}
-                {/*</div>*/}
+
                 <div className="location-content">
                     <h3 className="d-flex justify-content-center" style={{ "fontFamily": "Poppins", "color": "#043263FF" }}>{locationInfo.name}</h3>
                     <img src={locationInfo.imageURL} alt={locationInfo.name} style={{ "width": "100%" }} />
+                    <p>{locationInfo.description}</p>
                 </div>
-
-                <p>{locationInfo.description}</p>
             </div>
         </div>
     )

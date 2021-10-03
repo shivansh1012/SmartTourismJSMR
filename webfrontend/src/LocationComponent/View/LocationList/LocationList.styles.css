@@ -20,6 +20,11 @@ a {
   overflow: hidden;
 }
 
+.card {
+  max-width: 290px;
+  /*height: auto;*/
+}
+
 .card:hover {
   background-color: var(--accent-color);
 }
@@ -29,7 +34,7 @@ a {
   max-height: 290px;
   max-width: 290px;
   width: 290px;
-  height: auto;
+  height: 200px;
 }
   
 .content a {

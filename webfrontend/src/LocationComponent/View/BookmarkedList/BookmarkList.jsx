@@ -20,16 +20,21 @@ export default function BookmarkList() {
             {
                 bookmarkList.length > 0 && bookmarkList.map((location) => {
                     return (
-                        <div className="list" key={location.id}>
-                            <div className="ui card">
-                                <Link to={`/home/location/${location.id}`}>
-                                    <img src={location.imageURL} alt={location.name} />
-                                </Link>
-
-                                <div className="content">
+                        <div className="bookmarked-locations">
+                            <div id="back">
+                                <Link to="/home" style={{}}>{'<'}Back</Link>
+                            </div>
+                            <div className="list" key={location.id}>
+                                <div className="ui card">
                                     <Link to={`/home/location/${location.id}`}>
-                                        {location.name}
+                                        <img src={location.imageURL} alt={location.name} />
                                     </Link>
+
+                                    <div className="content">
+                                        <Link to={`/home/location/${location.id}`}>
+                                            {location.name}
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>

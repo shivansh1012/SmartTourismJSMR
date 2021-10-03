@@ -4,6 +4,8 @@ import axios from 'axios';
 import { apiBaseURL } from "../../../Config.js";
 import UserAuthContext from "../../UserAuthContext.js";
 
+import "./UserLogin.styles.css";
+
 export default function UserLogin() {
 
     const [email, setEmail] = useState("");
@@ -41,30 +43,20 @@ export default function UserLogin() {
     };
 
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md-4 offset-md-4">
-                    <div className="login-form bg-light mt-4 p-4">
-                        <form className="row g-3" onSubmit={handleLogin}>
-                            <div className="col-12">
-                                <label>Email</label>
-                                <input type="text" name="email" className="form-control" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                            </div>
-                            <div className="col-12">
-                                <label>Password</label>
-                                <input type="password" name="password" className="form-control" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                            </div>
-                            <div className="col-12">
-                                <button type="submit" className="btn btn-dark float-end">Login</button>
-                            </div>
-                        </form>
-                        <hr className="mt-4" />
-                        <div className="col-12">
-                            <p className="text-center mb-0"><Link to="/register">Signup?</Link></p>
-                        </div>
+        <div className="login-form">
+            <form onSubmit={handleLogin}>
+                <h2>Sign In</h2>
+                <div className="form-container">
+                    <label>Email</label>
+                    <input type="text" name="email" className="form-control" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <label>Password</label>
+                    <input type="password" name="password" className="form-control" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <div className="text-center">
+                        <button type="submit" className="btn btn-success me-2">Sign In</button>
                     </div>
                 </div>
-            </div>
+            </form>
+            <p className="signUp-cta"><Link to="/register">Create an account</Link></p>
         </div>
     )
 }
