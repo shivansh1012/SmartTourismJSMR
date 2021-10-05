@@ -4,6 +4,7 @@ import { apiBaseURL } from "../../../Config.js";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
+import { faStar } from "@fortawesome/free-regular-svg-icons";
 
 export default function LocationInfo(props) {
     const [locationInfo, setLocationInfo] = useState([]);
@@ -82,7 +83,7 @@ export default function LocationInfo(props) {
                 if (res.status === 401)
                     alert(res.data.message);
                 else {
-                    alert(res.data.message);
+                    // alert(res.data.message);
                     getLocationInfo();
                 }
             })
@@ -129,35 +130,43 @@ export default function LocationInfo(props) {
                     <h3 className="d-flex justify-content-center" style={{ "fontFamily": "Poppins", "color": "#043263FF" }}>{locationInfo.name}</h3>
                     <img src={locationInfo.imageURL} alt={locationInfo.name} style={{ "width": "100%" }} />
                     <p className="py-3"> {locationInfo.description}</p>
-                    {/* <p style={{"fontSize":"20px"}}> Reviews</p>
-                    {
-                        reviewList.length === 0 &&
-                        <p>No Reviews Yet. Be the first one.</p>
-                    }
-                    {
-                        reviewList.length !== 0 && reviewList.map((review,index) => {
-                            return (
-                                <p key={review.id}>Review {index+1} - {review.review}</p>
-                            )
-                        })
-                    }
+                    <p style={{ "fontSize": "20px" }}> Reviews</p>
+                    <div className="row">
+                        {
+                            reviewList.length === 0 &&
+                            <p>No Reviews Yet. Be the first one.</p>
+                        }
+                        {
+                            reviewList.length !== 0 && reviewList.map((review) => {
+                                return (
+                                    <div className="col-sm-6 py-2" key={review.id}>
+                                        <div className="card">
+                                            <div className="card-body">
+                                                <p className="card-text">{review.review} - {review.rating} <FontAwesomeIcon icon={faStar} /></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                     <div className="container">
                         <div className="row">
-                                <form className="row g-3" onSubmit={handleSubmit}>
-                                    <div className="col-12">
-                                        <label>Review</label>
-                                        <textarea type="text" name="Review" className="form-control" placeholder="Description" value={review} onChange={(e) => setReview(e.target.value)} style={{ height: "10vh" }} />
-                                    </div>
-                                    <div className="col-12">
-                                        <label>Rating</label>
-                                        <input type="text" name="rating" className="form-control" placeholder="State" value={rating} onChange={(e) => setRating(e.target.value)} />
-                                    </div>
-                                    <div className="col-12">
-                                        <button type="submit" className="btn btn-dark float-end">Submit</button>
-                                    </div>
-                                </form>
+                            <form className="row g-3" onSubmit={handleSubmit}>
+                                <div className="col-12">
+                                    <label>Review</label>
+                                    <textarea type="text" name="Review" className="form-control" placeholder="Write a Review" value={review} onChange={(e) => setReview(e.target.value)} style={{ height: "10vh" }} />
+                                </div>
+                                <div className="col-12">
+                                    <label>Rating</label>
+                                    <input type="text" name="rating" className="form-control" placeholder="Rate it" value={rating} onChange={(e) => setRating(e.target.value)} />
+                                </div>
+                                <div className="col-12">
+                                    <button type="submit" className="btn btn-dark float-end">Submit</button>
+                                </div>
+                            </form>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </div>

@@ -14,7 +14,6 @@ a {
 
 .list {
   display: inline-block;
-  max-width: 60%;
   cursor: pointer;
   margin: 5px;
   overflow: hidden;

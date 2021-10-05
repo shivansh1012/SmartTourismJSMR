@@ -15,5 +15,10 @@ code {
 .leftScroll {
   height: 500px;
   overflow: auto;
+  -ms-overflow-style: none;
   text-align: justify;
+}
+
+.leftScroll::-webkit-scrollbar {
+  display: none;
 }
