@@ -4,7 +4,7 @@ import { Route, useRouteMatch } from "react-router-dom";
 import LocationList from "./View/LocationList/LocationList.jsx";
 import LocationInfo from "./View/LocationInfo/LocationInfo.jsx";
 
-import BookmarkList from "./View/BookmarkedList/BookmarkList.jsx";
+import BookmarkList from "./View/BookmarkList/BookmarkList.jsx";
 
 import UserAuthContext from "./UserAuthContext.js";
 

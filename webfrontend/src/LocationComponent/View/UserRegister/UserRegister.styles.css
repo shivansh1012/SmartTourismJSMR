@@ -3,12 +3,10 @@
     display: grid;
     justify-items: center;
     align-items: center;
-    /*background-color: var(--accent-color);*/
-    margin-top: 150px;
+    margin-top: 50px;
     margin-right: auto;
     margin-left: auto;
     max-width: 350px;
-    border: 1px solid var(--secondary-color);
     padding: 30px;
 }
 

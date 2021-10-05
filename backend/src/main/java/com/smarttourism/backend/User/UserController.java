@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/user")
@@ -72,8 +73,8 @@ public class UserController {
 
     // ***************User Auth**********************
 
-    @RequestMapping(method = RequestMethod.GET, path = "/getloggedin")
-    public @ResponseBody ResponseEntity<?> getLoggedIn(
+    @RequestMapping(method = RequestMethod.GET, path = "/verify")
+    public @ResponseBody ResponseEntity<?> getLoggedIn(HttpServletResponse response,
             @CookieValue(value = "userId", defaultValue = "null") String userId) {
         HashMap<String, Object> hashMap = new HashMap<>();
         try {
@@ -81,7 +82,19 @@ public class UserController {
                 hashMap.put("userAuth", false);
                 return new ResponseEntity<>(hashMap, HttpStatus.OK);
             }
-            User existingUser = userRepository.findById(userId).get();
+
+            Optional<User> optionalUser = userRepository.findById(userId);
+            if(! optionalUser.isPresent()){
+                Cookie cookie = new Cookie("userId", null);
+                cookie.setMaxAge(0);
+                cookie.setSecure(true);
+                cookie.setHttpOnly(true);
+                cookie.setPath("/");
+                response.addCookie(cookie);
+                hashMap.put("userAuth", false);
+                return new ResponseEntity<>(hashMap, HttpStatus.OK);
+            }
+            User existingUser = optionalUser.get();
             hashMap.put("userAuth", true);
             hashMap.put("name", existingUser.name);
             hashMap.put("email", existingUser.email);

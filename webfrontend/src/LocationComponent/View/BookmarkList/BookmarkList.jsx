@@ -18,7 +18,7 @@ export default function BookmarkList() {
     return (
         <>
             <div id="back">
-                <Link to="/home" style={{}}>{'<'}Back</Link>
+                <Link to="/home" style={{"color":"Black"}}>{'<'}Back</Link>
             </div>
             {
                 bookmarkList.length > 0 && bookmarkList.map((location) => {
