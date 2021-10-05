@@ -75,7 +75,7 @@ public class Location {
         this.description = description;
     }
 
-    @JsonBackReference
+    @JsonManagedReference
     public ArrayList<Review> getReview() {
         return review;
     }

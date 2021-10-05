@@ -17,19 +17,23 @@ export default function BookmarkList() {
 
     return (
         <>
+            <div className="d-flex justify-content-between">
             <div id="back">
                 <Link to="/home" style={{"color":"Black"}}>{'<'}Back</Link>
+            </div>
+            <p style={{"fontSize": "25px"}}>Bookmarks</p>
+            <p style={{"color": "white"}}>Space</p>
             </div>
             {
                 bookmarkList.length > 0 && bookmarkList.map((location) => {
                     return (
                             <div className="list" key={location.id}>
-                                <div className="ui card">
+                                <div className="card">
                                     <Link to={`/home/location/${location.id}`}>
-                                        <img src={location.imageURL} alt={location.name} />
+                                        <img src={location.imageURL} alt={location.name}  className="p-3"/>
                                     </Link>
 
-                                    <div className="content">
+                                    <div className="content text-center">
                                         <Link to={`/home/location/${location.id}`}>
                                             {location.name}
                                         </Link>

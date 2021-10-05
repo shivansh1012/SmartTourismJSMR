@@ -24,11 +24,11 @@ export default function LocationList() {
                 locationList.map((location) => {
                     return (
                         <div className="list" key={location.id}>
-                            <div className="ui card">
+                            <div className="card">
                                 <Link to={`/home/location/${location.id}`}>
-                                    <img src={location.imageURL} alt={location.name} />
+                                    <img src={location.imageURL} alt={location.name} className="p-3"/>
                                 </Link>
-                                <div className="content">
+                                <div className="content text-center">
                                     <Link to={`/home/location/${location.id}`}>
                                         {location.name}
                                     </Link>
