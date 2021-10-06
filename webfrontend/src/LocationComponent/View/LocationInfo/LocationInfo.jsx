@@ -114,20 +114,23 @@ export default function LocationInfo(props) {
                     <div id="back">
                         <Link to="/home" style={{ textDecoration: "none", color: "black" }}>{'<'} Back</Link>
                     </div>
+                    <h3 style={{ "fontFamily": "Poppins", "color": "#043263FF" }}>
+                        {locationInfo.name}
+                    </h3>
                     <div className="bookmark-cta">
                         {bookmark === false &&
                             <p type="button" className="bookmark-button" onClick={addToBookmark}>
-                                <FontAwesomeIcon icon={faBookmark} />  Save
-                            </p>}
+                                <FontAwesomeIcon icon={faBookmark} /> Save<span style={{"color": "white"}}>me</span></p>
+                        }
                         {bookmark === true &&
                             <p type="button" className="bookmark-button" onClick={removeFromBookmark}>
-                                <FontAwesomeIcon icon={faBookmark} />  Remove
-                            </p>}
+                                <FontAwesomeIcon icon={faBookmark} /> Remove</p>
+                        }
                     </div>
                 </div>
 
                 <div className="location-content">
-                    <h3 className="d-flex justify-content-center" style={{ "fontFamily": "Poppins", "color": "#043263FF" }}>{locationInfo.name}</h3>
+                    {/* <h3 className="d-flex justify-content-center" style={{ "fontFamily": "Poppins", "color": "#043263FF" }}>{locationInfo.name}</h3> */}
                     <img src={locationInfo.imageURL} alt={locationInfo.name} style={{ "width": "100%" }} />
                     <p className="py-3"> {locationInfo.description}</p>
                     <p style={{ "fontSize": "20px" }}> Reviews</p>

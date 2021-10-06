@@ -24,7 +24,7 @@ export default function LocationRouter() {
             </div>
             <div className="container">
                 <div className="d-flex justify-content-between">
-                    <div className="leftScroll" style={{ "overflowX": "hidden" }}>
+                    <div className="leftScroll" style={{ "overflowX": "hidden" , "width":"100%"}}>
                         <div>
                             {
                                 userLoggedIn === true && (
