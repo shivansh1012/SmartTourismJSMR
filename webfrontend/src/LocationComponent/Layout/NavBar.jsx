@@ -32,9 +32,9 @@ export default function NavBar() {
                                 <Link className="nav-link" to="/home" id="login-button" style={{ "fontSize": "20px" }}>Home</Link>
                             </div>
                             {(userLoggedIn === false || userLoggedIn === undefined) && (
-                                <>
+                                <div className="signIn-cta">
                                     <Link className="nav-link" to="/login" id="login-button" style={{ "fontSize": "20px" }}>Sign In</Link>
-                                </>
+                                </div>
                             )}
                             {userLoggedIn === true && (
                                 <>

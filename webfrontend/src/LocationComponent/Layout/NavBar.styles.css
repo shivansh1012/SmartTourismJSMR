@@ -28,17 +28,11 @@
     color: var(--secondary-color);
 }
 
-.homepage:hover {
+.homepage:hover, .bookmarks-page:hover, .signIn-cta:hover {
     border-width: 0 0 2px;
     border-style: solid;
     border-color: var(--primary-color);
     text-underline-offset: auto;
-}
-
-.bookmarks-page:hover {
-    border-width: 0 0 2px;
-    border-style: solid;
-    border-color: var(--primary-color);
 }
 
 button {
