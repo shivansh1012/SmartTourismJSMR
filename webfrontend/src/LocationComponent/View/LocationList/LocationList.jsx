@@ -20,8 +20,8 @@ export default function LocationList() {
 
     return (
         <>
-            <div className="container px-5">
-                <p style={{ "textAlign": "center", "fontSize": "25px"}}>Trending Locations</p>
+            <div className="container">
+                <p>Trending Locations</p>
                 {
                     locationList.map((location) => {
                         return (

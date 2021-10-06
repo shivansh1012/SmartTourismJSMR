@@ -21,9 +21,9 @@ export default function BookmarkList() {
                 <div className="row">
                     <div className="d-flex justify-content-between">
                         <div id="back">
-                            <Link to="/home" style={{ "color": "Black" }}>{'<'}Back</Link>
+                            <Link to="/home" style={{ "color": "Black", "text-decoration": "none" }}>{'<'}Back</Link>
                         </div>
-                        <p style={{ "fontSize": "25px" }}>Bookmarks</p>
+                        <p style={{ "fontSize": "25px", "font-weight": "500" }}>Bookmarks</p>
                         <p style={{ "color": "white" }}>Space</p>
                     </div>
                     <div>

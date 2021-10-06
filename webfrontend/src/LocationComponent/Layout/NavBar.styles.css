@@ -28,6 +28,13 @@
     color: var(--secondary-color);
 }
 
+.homepage:hover, .bookmarks-page:hover, .signIn-cta:hover {
+    border-width: 0 0 2px;
+    border-style: solid;
+    border-color: var(--primary-color);
+    text-underline-offset: auto;
+}
+
 button {
     width: 80px;
     height: 40px;
