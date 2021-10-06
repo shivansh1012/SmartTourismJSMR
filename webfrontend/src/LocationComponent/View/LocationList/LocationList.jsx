@@ -10,7 +10,7 @@ export default function LocationList() {
 
     const getLocationList = async () => {
         const response = await axios.get(`${apiBaseURL}/location`);
-        // console.log(response.data);
+        // console.log(response.data.locationList);
         setLocationList(response.data.locationList)
     }
 
@@ -20,24 +20,27 @@ export default function LocationList() {
 
     return (
         <>
-            {
-                locationList.map((location) => {
-                    return (
-                        <div className="list" key={location.id}>
-                            <div className="ui card">
-                                <Link to={`/home/location/${location.id}`}>
-                                    <img src={location.imageURL} alt={location.name} />
-                                </Link>
-                                <div className="content">
+            <div className="container px-5">
+                <p style={{ "textAlign": "center", "fontSize": "25px"}}>Trending Locations</p>
+                {
+                    locationList.map((location) => {
+                        return (
+                            <div className="list" key={location.id}>
+                                <div className="card">
                                     <Link to={`/home/location/${location.id}`}>
-                                        {location.name}
+                                        <img src={location.imageURL} alt={location.name} className="p-3" />
                                     </Link>
+                                    <div className="content text-center">
+                                        <Link to={`/home/location/${location.id}`}>
+                                            {location.name}
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    )
-                })
-            }
+                        )
+                    })
+                }
+            </div>
         </>
     )
 }

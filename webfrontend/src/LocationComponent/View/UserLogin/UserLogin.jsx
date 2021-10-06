@@ -20,7 +20,7 @@ export default function UserLogin() {
             email,
             password
         }
-        await axios.post(`${apiBaseURL}/user`, loginData, {
+        await axios.post(`${apiBaseURL}/user/login`, loginData, {
             headers: {
                 "Content-Type": "application/json",
             },
@@ -58,5 +58,18 @@ export default function UserLogin() {
             </form>
             <p className="signUp-cta"><Link to="/register">Create an account</Link></p>
         </div>
+        // <div className="login-clean">
+        //     <form method="post">
+        //         <h2 className="visually-hidden">Login Form</h2>
+        //         <div className="mb-3"><input type="email" className="form-control" name="email" placeholder="Email"/>
+        //         </div>
+        //         <div className="mb-3"><input type="password" className="form-control" name="password"
+        //                                      placeholder="Password"/></div>
+        //         <div className="mb-3">
+        //             <button className="btn btn-primary d-block w-100" type="submit">Log In</button>
+        //         </div>
+        //         <a className="forgot" href="#">Forgot your email or password?</a>
+        //     </form>
+        // </div>
     )
 }
