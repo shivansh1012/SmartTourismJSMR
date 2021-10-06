@@ -17,13 +17,13 @@ export default function BookmarkList() {
 
     return (
         <>
+            <div id="back">
+                <Link to="/home" style={{"textDecoration": "none", color: "black"}}>{'<'}Back</Link>
+            </div>
             {
                 bookmarkList.length > 0 && bookmarkList.map((location) => {
                     return (
                         <div className="bookmarked-locations">
-                            <div id="back">
-                                <Link to="/home" style={{}}>{'<'}Back</Link>
-                            </div>
                             <div className="list" key={location.id}>
                                 <div className="ui card">
                                     <Link to={`/home/location/${location.id}`}>
