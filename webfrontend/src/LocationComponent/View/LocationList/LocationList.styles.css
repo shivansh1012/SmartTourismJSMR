@@ -12,6 +12,12 @@ a {
   text-decoration: none;
 }
 
+p {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 500;
+}
+
 .list {
   display: inline-block;
   cursor: pointer;
