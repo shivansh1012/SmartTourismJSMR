@@ -28,7 +28,7 @@
     color: var(--secondary-color);
 }
 
-.homepage:hover, .bookmarks-page:hover, .signIn-cta:hover {
+.homepageBTN:hover, .bookmarkBTN:hover, .signInBTN:hover {
     border-width: 0 0 2px;
     border-style: solid;
     border-color: var(--primary-color);

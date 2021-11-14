@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
+import {faTrash} from "@fortawesome/free-solid-svg-icons";
 
 export default function LocationInfo(props) {
     const [locationInfo, setLocationInfo] = useState([]);
@@ -54,7 +55,7 @@ export default function LocationInfo(props) {
                 if (res.status === 401)
                     alert(res.data.message);
                 else {
-                    alert(res.data.message);
+                    // alert(res.data.message);
                     setBookmark(false);
                 }
             })
@@ -64,7 +65,7 @@ export default function LocationInfo(props) {
             });
     }
 
-    const handleSubmit = async (e) => {
+    const handleReviewSubmit = async (e) => {
         e.preventDefault();
         const payloadData = {
             locationId: locationInfo.id,
@@ -84,7 +85,7 @@ export default function LocationInfo(props) {
                     alert(res.data.message);
                 else {
                     // alert(res.data.message);
-                    getLocationInfo();
+                    await getLocationInfo();
                 }
             })
             .catch((err) => {
@@ -92,6 +93,11 @@ export default function LocationInfo(props) {
                 alert("Error")
             });
     }
+
+    const handleReviewDeletion = async (e) => {
+        alert("Function is being worked on");
+    }
+
 
     const getLocationInfo = useCallback(async () => {
         await axios.get(`${apiBaseURL}/location?id=${props.id}`).then((res) => {
@@ -145,7 +151,15 @@ export default function LocationInfo(props) {
                                     <div className="col-sm-6 py-2" key={review.id}>
                                         <div className="card">
                                             <div className="card-body">
-                                                <p className="card-text">{review.review} - {review.rating} <FontAwesomeIcon icon={faStar} /></p>
+                                                <p className="card-text">
+                                                    {review.rating} <FontAwesomeIcon icon={faStar} /> - {review.review}
+                                                    {
+                                                        <>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <FontAwesomeIcon style={{"cursor":"pointer"}} icon={faTrash} onClick={handleReviewDeletion}/>
+                                                        </>
+                                                    }
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -155,7 +169,7 @@ export default function LocationInfo(props) {
                     </div>
                     <div className="container">
                         <div className="row">
-                            <form className="row g-3" onSubmit={handleSubmit}>
+                            <form className="row g-3" onSubmit={handleReviewSubmit}>
                                 <div className="col-12">
                                     <label>Review</label>
                                     <textarea type="text" name="Review" className="form-control" placeholder="Write a Review" value={review} onChange={(e) => setReview(e.target.value)} style={{ height: "10vh" }} />

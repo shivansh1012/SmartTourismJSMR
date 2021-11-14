@@ -1,29 +1,15 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { apiBaseURL } from "../../../Config.js";
+import React from "react";
 import "./LocationList.styles.css";
 import { Link } from "react-router-dom";
 
-export default function LocationList() {
-
-    const [locationList, setLocationList] = useState([]);
-
-    const getLocationList = async () => {
-        const response = await axios.get(`${apiBaseURL}/location`);
-        // console.log(response.data.locationList);
-        setLocationList(response.data.locationList)
-    }
-
-    useEffect(() => {
-        getLocationList();
-    }, []);
+export default function LocationList(props) {
 
     return (
         <>
             <div className="container">
-                <p>Trending Locations</p>
+                <p className="pheading">Trending Locations</p>
                 {
-                    locationList.map((location) => {
+                    props.locationList.map((location) => {
                         return (
                             <div className="list" key={location.id}>
                                 <div className="card">

@@ -28,21 +28,21 @@ export default function NavBar() {
                     </button>
                     <div className="collapse navbar-collapse" id="navcol-1">
                         <ul className="navbar-nav ms-auto">
-                            <div className="homepage">
+                            <div className="homepageBTN">
                                 <Link className="nav-link" to="/home" id="login-button" style={{ "fontSize": "20px" }}>Home</Link>
                             </div>
                             {(userLoggedIn === false || userLoggedIn === undefined) && (
-                                <div className="signIn-cta">
+                                <div className="signInBTN">
                                     <Link className="nav-link" to="/login" id="login-button" style={{ "fontSize": "20px" }}>Sign In</Link>
                                 </div>
                             )}
                             {userLoggedIn === true && (
                                 <>
-                                    <div className="bookmarks-page">
+                                    <div className="bookmarkBTN">
                                         <Link className="nav-link" to="/home/bookmark" style={{ "fontSize": "20px" }}>Bookmarks</Link>
                                     </div>
                                     <li className="nav-item dropdown" style={{ "fontSize": "20px" }}>
-                                        <a className="dropdown-toggle nav-link" data-bs-toggle="dropdown" href="#">Hello, {userName} </a>
+                                        <div className="dropdown-toggle nav-link homepageBTN" data-bs-toggle="dropdown" style={{cursor:"pointer"}}>Hello, {userName} </div>
                                         <div className="dropdown-menu">
                                             <button className="dropdown-item" disabled>Preferences (Coming Soon)</button>
                                             <button className="dropdown-item" onClick={handleLogout}>Logout</button>
