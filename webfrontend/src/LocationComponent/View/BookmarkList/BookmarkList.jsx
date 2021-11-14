@@ -48,7 +48,7 @@ export default function BookmarkList() {
                         }
 
                         {
-                            bookmarkList.length === 0 && <p>No Bookmarks</p>
+                            bookmarkList.length === 0 && <p style={{textAlign:"center"}}>No Bookmarks</p>
                         }
                     </div>
                 </div>

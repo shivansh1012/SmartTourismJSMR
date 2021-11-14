@@ -3,9 +3,6 @@ package com.smarttourism.backend.User;
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.smarttourism.backend.Location.Location;
 import com.smarttourism.backend.Review.Review;
 

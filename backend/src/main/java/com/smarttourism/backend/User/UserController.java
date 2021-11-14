@@ -160,7 +160,7 @@ public class UserController {
             Update userUpdate = new Update();
             userUpdate.push("bookmarkedLocation", existingLocation);
 
-            User userCounter = mongoOps.findAndModify(userQuery, userUpdate, User.class);
+            mongoOps.findAndModify(userQuery, userUpdate, User.class);
             // System.out.println(!Objects.isNull(userCounter) ? userCounter.getId() : 1);
 
             hashMap.put("message", "Bookmark Add Success");
@@ -189,7 +189,7 @@ public class UserController {
             Update userUpdate = new Update();
             userUpdate.pull("bookmarkedLocation", body.get(("locationId")));
 
-            User userCounter = mongoOps.findAndModify(userQuery, userUpdate, User.class);
+            mongoOps.findAndModify(userQuery, userUpdate, User.class);
             // System.out.println(!Objects.isNull(userCounter) ? userCounter.getId() : 1);
 
             hashMap.put("message", "Bookmark Removed");

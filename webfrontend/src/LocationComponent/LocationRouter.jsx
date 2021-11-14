@@ -24,21 +24,25 @@ export default function LocationRouter() {
     const { path } = useRouteMatch();
     const [pointer, setPointer] = useState("India");
 
-    if ("geolocation" in navigator) {
-        console.log("Available");
-    } else {
-        console.log("Not Available");
+    // if ("geolocation" in navigator) {
+    //     console.log("Available");
+    // } else {
+    //     console.log("Not Available");
+    // }
+
+    // navigator.geolocation.getCurrentPosition(function (position) {
+    //     console.log("Latitude is :", position.coords.latitude);
+    //     console.log("Longitude is :", position.coords.longitude);
+    // });
+
+    // navigator.geolocation.getCurrentPosition(function (position) {
+    //     console.log(position)
+    // });
+
+    const handleQueryChange = (e) => {
+        setQuery(e.target.value);
+        setDisplayList(locationList.filter((location) => location['name'].toLowerCase().includes(e.target.value.toLowerCase())));
     }
-
-    navigator.geolocation.getCurrentPosition(function (position) {
-        console.log("Latitude is :", position.coords.latitude);
-        console.log("Longitude is :", position.coords.longitude);
-    });
-
-    navigator.geolocation.getCurrentPosition(function (position) {
-        console.log(position)
-    });
-
 
     useEffect(() => {
         axios.get(`${apiBaseURL}/location`).then((res) => {
@@ -47,10 +51,6 @@ export default function LocationRouter() {
         });
     }, [])
 
-    const handleQueryChange = (e) => {
-        setQuery(e.target.value);
-        setDisplayList(locationList.filter((location) => location['name'].toLowerCase().includes(e.target.value.toLowerCase())));
-    }
     return (
         <>
             <div className="container py-3 w-50">

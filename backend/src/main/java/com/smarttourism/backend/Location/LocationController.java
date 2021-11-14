@@ -6,6 +6,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -19,6 +24,9 @@ public class LocationController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private MongoOperations mongoOps;
+
     // ***************Location Requests**********************
 
     @RequestMapping(method = RequestMethod.GET, path = "", produces = { "application/JSON" })
@@ -29,6 +37,16 @@ public class LocationController {
         if (id.equals("all"))
             hashMap.put("locationList", locationRepository.findAll());
         else {
+            hashMap.put("locationList", locationRepository.findById(id));
+
+            Query locationQuery = new Query();
+            Criteria locationCriteria = Criteria.where("id").is(id);
+            locationQuery.addCriteria(locationCriteria);
+            Update locationUpdate = new Update();
+            locationUpdate.inc("views", 1);
+
+            mongoOps.findAndModify(locationQuery, locationUpdate, Location.class);
+
             if (userId.equals("null")) {
                 hashMap.put("isBookmarked", false);
             } else {
@@ -41,7 +59,6 @@ public class LocationController {
                 }
                 hashMap.putIfAbsent("isBookmarked", false);
             }
-            hashMap.put("locationList", locationRepository.findById(id));
         }
         return new ResponseEntity<>(hashMap, HttpStatus.OK);
     }

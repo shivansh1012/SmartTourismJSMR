@@ -2,10 +2,7 @@ package com.smarttourism.backend.Location;
 
 import java.util.ArrayList;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.smarttourism.backend.Review.Review;
 
 import org.springframework.data.annotation.Id;
@@ -22,6 +19,8 @@ public class Location {
     public String name;
     public String imageURL;
     public String description;
+
+    public Integer views;
     
     @DBRef
     public ArrayList<Review> review;
@@ -38,6 +37,7 @@ public class Location {
         this.imageURL = imageURL;
         this.description = description;
         this.review = new ArrayList<Review>();
+        this.views = 0;
         this.address = address;
         this.state = state;
         this.country = country;
@@ -112,6 +112,14 @@ public class Location {
     public String toString() {
         return "Location [address=" + address + ", country=" + country + ", description=" + description + ", id=" + id
                 + ", imageURL=" + imageURL + ", name=" + name + ", review=" + review + ", state=" + state + "]";
+    }
+
+    public Integer getViews() {
+        return views;
+    }
+
+    public void setViews(Integer views) {
+        this.views = views;
     }
     
 }

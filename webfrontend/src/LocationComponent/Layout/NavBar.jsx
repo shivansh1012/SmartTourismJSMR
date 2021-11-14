@@ -54,34 +54,6 @@ export default function NavBar() {
                     </div>
                 </div>
             </nav>
-
-            {/*<nav className="navbar navbar-expand-sm navbar-light bg-light">*/}
-            {/*    <div className="container-fluid">*/}
-            {/*        <span className="navbar-brand m-4 h1">*/}
-            {/*            <Link className="nav-link logo" to="/">Elate <span>Tourist</span></Link>*/}
-            {/*        </span>*/}
-            {/*        <button className="navbar-toggler" type="button" data-bs-toggle="collapse"*/}
-            {/*                data-bs-target="#navbarNavAltMarkup">*/}
-            {/*            <span className="navbar-toggler-icon"></span>*/}
-            {/*        </button>*/}
-            {/*        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">*/}
-            {/*            <div className="navbar-nav ms-auto">*/}
-            {/*                {(userLoggedIn === false || userLoggedIn === undefined) && (*/}
-            {/*                    <Link className="nav-link" to="/login" id="login-button">*/}
-            {/*                        <button type="button">Sign In</button>*/}
-            {/*                    </Link>)}*/}
-            {/*                {userLoggedIn === true && (*/}
-            {/*                    <>*/}
-            {/*                        <h5>{userName}</h5>*/}
-            {/*                        <Link className="nav-link" to="/home/bookmark">Bookmarks</Link>*/}
-            {/*                        <button type="button" onClick={handleLogout}>Logout</button>*/}
-            {/*                    </>*/}
-            {/*                )}*/}
-            {/*                <Link className="nav-link" to="/new">NewLocation</Link>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</nav>*/}
         </>
     )
 }

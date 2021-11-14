@@ -9,7 +9,11 @@ export default function LocationList(props) {
             <div className="container">
                 <p className="pheading">Trending Locations</p>
                 {
-                    props.locationList.map((location) => {
+                    props.locationList.sort((location1, location2) => {
+                        if(location1.views<location2.views) return 1
+                        else if(location1.views===location2.views) return 0
+                        else return -1
+                    }).map((location) => {
                         return (
                             <div className="list" key={location.id}>
                                 <div className="card">

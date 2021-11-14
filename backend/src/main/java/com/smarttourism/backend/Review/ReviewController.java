@@ -87,8 +87,8 @@ public class ReviewController {
             Update locationUpdate = new Update();
             locationUpdate.push("review", savedReview);
 
-            User userCounter = mongoOps.findAndModify(userQuery, userUpdate, User.class);
-            Location locationCounter = mongoOps.findAndModify(locationQuery, locationUpdate, Location.class);
+            mongoOps.findAndModify(userQuery, userUpdate, User.class);
+            mongoOps.findAndModify(locationQuery, locationUpdate, Location.class);
 
             // System.out.println(!Objects.isNull(userCounter) ? userCounter.getId() : 1);
             // System.out.println(!Objects.isNull(locationCounter) ?
