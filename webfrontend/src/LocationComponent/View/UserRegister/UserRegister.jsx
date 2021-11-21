@@ -27,7 +27,6 @@ export default function UserRegister() {
             }
         })
             .then(async (res) => {
-                // console.log(res.data);
                 alert(res.data.message);
                 await getUserLoggedIn();
                 history.push("/login");

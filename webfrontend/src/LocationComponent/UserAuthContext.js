@@ -11,7 +11,6 @@ function UserAuthContextProvider(props) {
 
   async function getUserLoggedIn() {
     const loggedInRes = await axios.get(`${apiBaseURL}/user/verify`);
-    // console.log(loggedInRes.data.userAuth);
     setUserLoggedIn(loggedInRes.data.userAuth);
     setUserName(loggedInRes.data.name);
     setUserEmail(loggedInRes.data.email);
