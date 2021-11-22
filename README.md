@@ -1,27 +1,23 @@
 # SmartTourismJSMR
 
-J - Java/Javascript  
+J - Java
 S - Spring Boot  
-M - MongoDB/MySQL  
+M - MongoDB  
 R - ReactJS  
 
 ## Getting Started
 
 ### Installing
 
-* After cloning the repository run command 
-  ```
-  npm i
-  ```
-  
-in webfrontend folder.
+* After cloning the repository exceute `npm i` command using terminal in webfrontend folder to install all the packages.  
+
 ### Executing program
 
-* To start server, Go into .\backend directory and execute
+* To start server, Go into the .\backend directory using terminal and execute
   ```
   .\mvnw spring-boot:run
   ```
-* To start client, Go into .\webfrontend directory and execute
+* To start webFrontend, Go into the .\webfrontend directory using another terminal and execute
   ```
   npm start
   ```
