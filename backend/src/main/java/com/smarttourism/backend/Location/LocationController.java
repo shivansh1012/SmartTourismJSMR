@@ -40,7 +40,7 @@ public class LocationController {
             hashMap.put("locationList", locationRepository.findById(id));
 
             Query locationQuery = new Query();
-            Criteria locationCriteria = Criteria.where("id").is(id);
+            Criteria locationCriteria = Criteria.where("id").is(id); // Update location WHERE id=inputId set views=views+1
             locationQuery.addCriteria(locationCriteria);
             Update locationUpdate = new Update();
             locationUpdate.inc("views", 1);

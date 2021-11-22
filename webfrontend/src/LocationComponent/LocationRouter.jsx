@@ -18,26 +18,11 @@ export default function LocationRouter() {
     const [query, setQuery] = useState("");
     const [locationList, setLocationList] = useState([]);
     const [displayList, setDisplayList] = useState([]);
-    // const [searchParam] = useState(["capital", "name"]);
 
     const { userLoggedIn } = useContext(UserAuthContext);
     const { path } = useRouteMatch();
     const [pointer, setPointer] = useState("India");
 
-    // if ("geolocation" in navigator) {
-    //     console.log("Available");
-    // } else {
-    //     console.log("Not Available");
-    // }
-
-    // navigator.geolocation.getCurrentPosition(function (position) {
-    //     console.log("Latitude is :", position.coords.latitude);
-    //     console.log("Longitude is :", position.coords.longitude);
-    // });
-
-    // navigator.geolocation.getCurrentPosition(function (position) {
-    //     console.log(position)
-    // });
 
     const handleQueryChange = (e) => {
         setQuery(e.target.value);

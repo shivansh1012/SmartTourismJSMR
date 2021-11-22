@@ -96,8 +96,8 @@ public class UserController {
             }
             User existingUser = optionalUser.get();
             hashMap.put("userAuth", true);
-            hashMap.put("name", existingUser.name);
-            hashMap.put("email", existingUser.email);
+            hashMap.put("name", existingUser.getName());
+            hashMap.put("email", existingUser.getEmail());
             return new ResponseEntity<>(hashMap, HttpStatus.OK);
         } catch (Exception e) {
             hashMap.put("message", "Internal Server Error");
@@ -154,6 +154,7 @@ public class UserController {
             }
             User existingUser = userRepository.findById(userId).get();
             Location existingLocation = locationRepository.findById(body.get("locationId")).get();
+            
             Query userQuery = new Query();
             Criteria userCriteria = Criteria.where("id").is(existingUser.getId());
             userQuery.addCriteria(userCriteria);

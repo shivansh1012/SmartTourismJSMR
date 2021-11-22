@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
-import {faTrash} from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export default function LocationInfo(props) {
     const [locationInfo, setLocationInfo] = useState([]);
@@ -104,7 +104,6 @@ export default function LocationInfo(props) {
             setLocationInfo(res.data.locationList)
             setBookmark(res.data.isBookmarked);
             props.setPointer(res.data.locationList.name);
-            // console.log(res.data.locationList);
             setReviewList(res.data.locationList.review);
         });
     }, [props]);
@@ -126,7 +125,7 @@ export default function LocationInfo(props) {
                     <div className="bookmark-cta">
                         {bookmark === false &&
                             <p type="button" className="bookmark-button" onClick={addToBookmark}>
-                                <FontAwesomeIcon icon={faBookmark} /> Save<span style={{"color": "white"}}>me</span></p>
+                                <FontAwesomeIcon icon={faBookmark} /> Save<span style={{ "color": "white" }}>me</span></p>
                         }
                         {bookmark === true &&
                             <p type="button" className="bookmark-button" onClick={removeFromBookmark}>
@@ -136,7 +135,6 @@ export default function LocationInfo(props) {
                 </div>
 
                 <div className="location-content">
-                    {/* <h3 className="d-flex justify-content-center" style={{ "fontFamily": "Poppins", "color": "#043263FF" }}>{locationInfo.name}</h3> */}
                     <img src={locationInfo.imageURL} alt={locationInfo.name} style={{ "width": "100%" }} />
                     <p className="py-3"> {locationInfo.description}</p>
                     <p style={{ "fontSize": "20px" }}> Reviews</p>
@@ -150,15 +148,19 @@ export default function LocationInfo(props) {
                                 return (
                                     <div className="col-sm-6 py-2" key={review.id}>
                                         <div className="card">
+                                            <div className="card-header d-flex justify-content-between">
+                                                <div>
+                                                    {review.rating} <FontAwesomeIcon icon={faStar} />
+                                                </div>
+                                                {
+                                                    <>
+                                                        <FontAwesomeIcon style={{ "cursor": "pointer" }} icon={faTrash} onClick={handleReviewDeletion} />
+                                                    </>
+                                                }
+                                            </div>
                                             <div className="card-body">
                                                 <p className="card-text">
-                                                    {review.rating} <FontAwesomeIcon icon={faStar} /> - {review.review}
-                                                    {
-                                                        <>
-                                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <FontAwesomeIcon style={{"cursor":"pointer"}} icon={faTrash} onClick={handleReviewDeletion}/>
-                                                        </>
-                                                    }
+                                                    {review.review}
                                                 </p>
                                             </div>
                                         </div>

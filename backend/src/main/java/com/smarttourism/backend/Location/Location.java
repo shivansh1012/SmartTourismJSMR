@@ -10,24 +10,23 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "location")
-// @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 public class Location {
 
     @Id
-    public String id;
+    private String id;
 
-    public String name;
-    public String imageURL;
-    public String description;
+    private String name;
+    private String imageURL;
+    private String description;
 
-    public Integer views;
+    private Integer views;
     
     @DBRef
-    public ArrayList<Review> review;
+    private ArrayList<Review> review;
     
-    public String address;
-    public String state;
-    public String country;
+    private String address;
+    private String state;
+    private String country;
 
     public Location() {
     }

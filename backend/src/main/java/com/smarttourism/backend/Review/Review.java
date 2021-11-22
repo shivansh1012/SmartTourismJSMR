@@ -1,7 +1,7 @@
 package com.smarttourism.backend.Review;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.smarttourism.backend.Location.Location;
@@ -15,16 +15,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 public class Review {
     @Id
-    public String id;
+    private String id;
 
     @DBRef
-    public User user;
+    private User user;
     
     @DBRef
-    public Location location;
+    private Location location;
     
-    public String review;
-    public String rating;
+    private String review;
+    private String rating;
 
     public Review() {
     }

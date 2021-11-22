@@ -11,20 +11,19 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document( collection = "user")
-// @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 public class User {
     @Id
-    public String id;
+    private String id;
 
-    public String name;
-    public String email;
-    public String password;
+    private String name;
+    private String email;
+    private String password;
 
     @DBRef
-    public ArrayList<Review> review;
+    private ArrayList<Review> review;
     
     @DBRef
-    public ArrayList<Location> bookmarkedLocation;
+    private ArrayList<Location> bookmarkedLocation;
 
     public User() {
     }
