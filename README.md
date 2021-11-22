@@ -1,6 +1,6 @@
 # SmartTourismJSMR
 
-J - Java
+J - Java  
 S - Spring Boot  
 M - MongoDB  
 R - ReactJS  
